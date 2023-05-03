@@ -14,8 +14,9 @@
   
   <body>
     
-    <div class="container">
-      <div class="row my-5">
+    <div class="container my-5">
+      <h1 class="text-center mb-5 text-danger">Input sentence and word to censor</h1>
+      <div class="row">
         <div class="col-6 mx-auto">
           <form action="myscript.php" method="get">
             <div class="mb-3">
