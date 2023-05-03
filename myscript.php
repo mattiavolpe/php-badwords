@@ -2,6 +2,7 @@
   $sentence = trim($_GET["sentence"]);
   $badWord = trim($_GET["bad_word"]);
   $censoredSentence = str_replace($badWord, "***", $sentence);
+  $badWordPosition = strpos($sentence, $badWord);
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,21 @@
       <h1 class="text-danger">Results</h1>
 
       <div class="mb-3">
-        <h3>You have inserted the following paragraph: <?php echo $sentence; ?></h3>
+        <h3>You have inserted the following paragraph:
+          <?php if ($badWordPosition === false) {
+            echo $sentence;
+           } else {
+            echo "<span>";
+            echo substr($sentence, 0, strpos($sentence, $badWord));
+            echo "</span>";
+            echo "<span class='text-danger'>";
+            echo $badWord;
+            echo "</span>";
+            echo "<span>";
+            echo substr($sentence, strpos($sentence, $badWord) + strlen($badWord));
+            echo "</span>";
+           } ?>
+        </h3>
         <h5>It's length is <?php echo strlen($sentence); ?></h5>
       </div>
 
