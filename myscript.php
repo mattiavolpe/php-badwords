@@ -1,6 +1,7 @@
 <?php
   $sentence = trim($_GET["sentence"]);
   $badWord = trim($_GET["bad_word"]);
+  $badWordForColouredOutput = "<span class='text-danger'>$badWord</span>";
   $censoredSentence = str_replace($badWord, "***", $sentence);
   $badWordPosition = strpos($sentence, $badWord);
 ?>
@@ -29,15 +30,7 @@
           <?php if ($badWordPosition === false) {
             echo $sentence;
            } else {
-            echo "<span>";
-            echo substr($sentence, 0, strpos($sentence, $badWord));
-            echo "</span>";
-            echo "<span class='text-danger'>";
-            echo $badWord;
-            echo "</span>";
-            echo "<span>";
-            echo substr($sentence, strpos($sentence, $badWord) + strlen($badWord));
-            echo "</span>";
+            echo str_replace($badWord, $badWordForColouredOutput, $sentence);
            } ?>
         </h3>
         <h5>It's length is <?php echo strlen($sentence); ?></h5>
