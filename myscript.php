@@ -27,11 +27,7 @@
 
       <div class="mb-3">
         <h3>You have inserted the following paragraph:
-          <?php if ($badWordPosition === false) {
-            echo $sentence;
-           } else {
-            echo str_replace($badWord, $badWordForColouredOutput, $sentence);
-           } ?>
+          <?php echo str_replace($badWord, $badWordForColouredOutput, $sentence); ?>
         </h3>
         <h5>It's length is <?php echo strlen($sentence); ?></h5>
       </div>
